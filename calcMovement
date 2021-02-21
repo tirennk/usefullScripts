@@ -1,21 +1,29 @@
-/// @function				calcMove()
-/// @description			calculates next ax/ay
-/// @param					_xn force applied over x axis that will be added to ax
-/// @param					_yn force applied over y axis that will be added to ay
-/// @param					_maxspd maxmimun speed that the object cant reach
-/// @param					_acc object acceleration value
-/// @brake					_brake deceleration value
-/// @param					_ox initial position of ax, this is used just for debug to show on screen the values of ax and ay moving the origin of this variable
-/// @param					_oy initial position of ay, this is used just for debug to show on screen the values of ax and ay moving the origin of this variable
+/// @function						calcMove()
+/// @description					calculates next ax/ay, variables that then can be used to calculate next x and y positions
+/// @description					_xn force applied over x axis that will be added to ax
+/// @description					_yn force applied over y axis that will be added to ay
+/// @description					_maxspd maxmimun speed that the object cant reach
+/// @description					_acc object acceleration value
+/// @description					_brake deceleration value
+/// @description					_ox initial position of ax, this is used just for debug to show on screen the values of ax and ay moving the origin of this variable
+/// @description					_oy initial position of ay, this is used just for debug to show on screen the values of ax and ay moving the origin of this variable
+/// @param							_xn
+/// @param							_yn
+/// @param							_maxspd
+/// @param							_acc
+/// @param							_brake
+/// @param							_ox
+/// @param							_oy
+
 
 function calcMove(_xn, _yn, _maxspd, _acc, _brake, _ox, _oy){
 	
 	
-	var _ox = is_undefined(_ox) ? 0 : _ox
-	var _oy = is_undefined(_oy) ? 0 : _oy
-	var _maxspd = is_undefined(_maxspd) ? 2 : _maxspd
-	var _acc = is_undefined(_acc) ? 0.1 : _acc
-	var _brake = is_undefined(_brake) ? 0.8 : _brake
+	_maxspd = is_undefined(_maxspd) ? 2 : _maxspd
+	_acc = is_undefined(_acc) ? 0.1 : _acc
+	_brake = is_undefined(_brake) ? 0.1 : _brake
+	_ox = is_undefined(_ox) ? 0 : _ox
+	_oy = is_undefined(_oy) ? 0 : _oy
 
 
 	if _xn != 0 or _yn != 0 {
@@ -36,7 +44,7 @@ function calcMove(_xn, _yn, _maxspd, _acc, _brake, _ox, _oy){
 		
 			if dn >= _acc { // avoids flickering when ax/ay is close to force x/y but not equal
 		
-				if d > dd { // if force is closer further to the origin that ax/ay
+				if d > dd { // if force is further to the origin that ax/ay
 		
 					ax += _acc * dx / d
 					ay += _acc * dy / d
@@ -44,7 +52,7 @@ function calcMove(_xn, _yn, _maxspd, _acc, _brake, _ox, _oy){
 				} else { // if force is closer to the origin that ax/ay
 			
 					ax += _acc * dxn / dn
-					ay += _acc * dyn / dn
+					ay += _acc * dyn / dn 
 			
 				}
 			} else {
