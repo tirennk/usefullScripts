@@ -36,7 +36,7 @@ function calcMove(_xn, _yn, _maxspd, _acc, _brake, _ox, _oy){
 		var ddy = ay - _oy
 		var dd = sqrt(power(ddx, 2) + power(ddy, 2))
 		
-		if dd < maxspd or d < dd { // if force x/y is below maxspd limit
+		if dd < _maxspd or d < dd { // if force x/y is below maxspd limit
 		
 			var dxn = _xn - ax
 			var dyn = _yn - ay
