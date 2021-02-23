@@ -15,7 +15,6 @@
 /// @param							_ox
 /// @param							_oy
 
-
 function calcMove(_xn, _yn, _maxspd, _acc, _brake, _ox, _oy){
 	
 	
